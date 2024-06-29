@@ -6,6 +6,14 @@ Decision Tree Classifier for Predicting Employee Efficiency
 
 This project uses a Decision Tree Classifier to predict employee efficiency based on various features such as age, experience, education level, and average handling time. The model is trained on a dataset (`data1.csv`) and can make predictions on new datasets (e.g., `data2.csv`).
 
+
+## Quick Steps to run the Model:
+1. save python file, i.e. decision_tree.py in a directory/folder
+2. update data1.csv for training data
+3. update data2.csv for test data (for which you want to see the output for)
+4. new file will be created with the name- data2_with_predictions.csv with your data
+
+
 ## Dataset
 
 ### data1.csv
