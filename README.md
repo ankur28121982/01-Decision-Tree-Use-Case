@@ -4,7 +4,7 @@ Decision Tree Classifier for Predicting Employee Efficiency
 
 ## Project Description
 
-This project uses a Decision Tree Classifier to predict employee efficiency based on various features such as age, experience, education level, and average handling time. The model is trained on a dataset (`data1.csv`) and can make predictions on new datasets (e.g., `data2.csv`). 
+This project uses a Decision Tree Classifier to predict employee efficiency based on various features such as age, experience, education level, and average handling time. The model is trained on a dataset (`data1.csv`) and can make predictions on new datasets (e.g., `data2.csv`).
 
 ## Dataset
 
@@ -27,7 +27,7 @@ Employee ID, Age, Experience (years), Education Level, Average Handling Time (AH
 
 ### data2.csv
 
-The new dataset used for prediction contains similar columns but may not include the `Efficiency (%)` column. 
+The new dataset used for prediction contains similar columns but may not include the `Efficiency (%)` column.
 
 ## Requirements
 
@@ -43,13 +43,13 @@ The new dataset used for prediction contains similar columns but may not include
    ```
 2. Navigate to the project directory:
    ```bash
-   cd your-repo-name
+   cd Decision-Tree-Use-Case
    ```
 3. Ensure that the required packages are installed:
    ```bash
    pip install pandas scikit-learn
    ```
-4. Prepare your datasets (`data1.csv` and `data2.csv`) and place them in the specified directory.
+4. Prepare your datasets (`data1.csv` and `data2.csv`) and place them in the project directory.
 
 5. Run the script to train the model and make predictions:
    ```bash
@@ -65,13 +65,14 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
+import os
 
 # Load the dataset
-file_path = r"C:\Users\Ankur\Desktop\Data Science\Data Science\data1.csv"
+file_path = os.path.join(os.getcwd(), 'data1.csv')
 data = pd.read_csv(file_path)
 
 # Separate features (X) and target variable (y)
-X = data.drop(columns=['Employee ID', 'Efficiency (%)'], inplace=False)
+X = data.drop(columns=['Employee ID', 'Efficiency (%)'])
 y = data['Efficiency (%)']
 
 # Perform one-hot encoding for categorical variables
@@ -98,14 +99,14 @@ print("Accuracy:", accuracy)
 
 ```python
 # Load the new dataset
-file_path_new = r"C:\Users\Ankur\Desktop\Data Science\Data Science\data2.csv"
+file_path_new = os.path.join(os.getcwd(), 'data2.csv')
 data_new = pd.read_csv(file_path_new)
 
 # Convert categorical variables to numerical format using one-hot encoding
 data_new_encoded = pd.get_dummies(data_new, columns=['Education Level'])
 
 # Drop unnecessary columns
-X_new = data_new_encoded.drop(columns=['Employee ID', 'Efficiency (%)'], inplace=False)
+X_new = data_new_encoded.drop(columns=['Employee ID'])
 
 # Use the trained decision tree model to make predictions on the new data
 y_pred_new = clf.predict(X_new)
@@ -118,7 +119,7 @@ print(y_pred_new)
 data_new['Predicted Efficiency (%)'] = y_pred_new
 
 # Save the new DataFrame with predictions to a new CSV file
-file_path_output = r"C:\Users\Ankur\Desktop\Data Science\Data Science\data2_with_predictions.csv"
+file_path_output = os.path.join(os.getcwd(), 'data2_with_predictions.csv')
 data_new.to_csv(file_path_output, index=False)
 
 print("Predictions saved to:", file_path_output)
@@ -126,6 +127,7 @@ print("Predictions saved to:", file_path_output)
 
 ## Author
 
-- Dr. Ankur
+- Dr. Ankur Chaturvedi
 - ankur1122@gmail.com
 
+Dr. Ankur Chaturvedi is a seasoned Transformation Specialist with expertise in Consulting, Data Science, and Quality Management. He has a profound background in LEAN and Agile Transformation, having managed and optimized processes for teams of up to 3000 FTEs. Dr. Chaturvedi is currently a Senior Manager at Infosys BPM, where he spearheads process excellence, quality consulting, and organizational improvements. His skill set includes deploying data analytics, robotics, and mindset & behavior tools to drive efficiency and transformation across various domains.
